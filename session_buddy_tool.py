@@ -120,8 +120,8 @@ def action_export(conn, tables, excluded_urls):
     items = remove_duplicates(filter_excluded(items))
 
     # print cjson.encode(items)
-    home_dir = str(Path(args.profile).parent)
-    filename = "export_session_buddy.json"
+    home_dir = str(Path(args.database_path).parent)
+    filename = "session_buddy_export.json"
     full_path = home_dir + "\\" + filename
     file = open(full_path, "w") 
     file.write(cjson.encode(items))
@@ -155,13 +155,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--action",
                         choices=['export', 'merge', 'clean'],
-                        help="Action: export, merge, clean",
+                        help="Action: export as a JSON file, merge, clean",
                         required=True)
     parser.add_argument("-e", "--exclude",
                         help="Path to file with excluded urls",
                         required=False)
-    parser.add_argument("-p", "--profile",
-                        help="Path to Chrome profile",
+    parser.add_argument("-d", "--database_path",
+                        help="Path to the database file" ,
                         required=False)
     args = parser.parse_args()
 
@@ -170,13 +170,13 @@ if __name__ == "__main__":
     if args.exclude:
         excluded_urls = load_exclude_file(args.exclude)
 
-    # chrome_profile = "%s/.config/google-chrome/Default/" % expanduser("~")
-    # if args.profile:
-        # chrome_profile = args.chrome_profile
+    # chrome_database_path = "%s/.config/google-chrome/Default/" % expanduser("~")
+    # if args.database_path:
+        # chrome_database_path = args.chrome_database_path
 
     # extension = "chrome-extension_edacconmaakjimmfgnblocblbcdcpbko_0"
-    # db_path = "%s/databases/%s/2" % (chrome_profile, extension)
-    db_path = args.profile
+    # db_path = "%s/databases/%s/2" % (chrome_database_path, extension)
+    db_path = args.database_path
     conn = sqlite3.connect(db_path)
     try:
         if args.action == "export":
