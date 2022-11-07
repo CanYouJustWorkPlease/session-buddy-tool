@@ -14,6 +14,7 @@ import cjson
 import sqlite3
 import os
 from os.path import expanduser
+from pathlib2 import Path
 
 #
 # Helpers
@@ -118,8 +119,15 @@ def action_export(conn, tables, excluded_urls):
 
     items = remove_duplicates(filter_excluded(items))
 
-    print cjson.encode(items)
-
+    # print cjson.encode(items)
+    home_dir = str(Path(args.profile).parent)
+    filename = "export_session_buddy.json"
+    full_path = home_dir + "\\" + filename
+    file = open(full_path, "w") 
+    file.write(cjson.encode(items))
+    file.close()
+    print("File is stored at: " + full_path)
+    
 def action_merge(conn, tables, excluded_urls):
     items = []
     for table in tables:
@@ -162,12 +170,13 @@ if __name__ == "__main__":
     if args.exclude:
         excluded_urls = load_exclude_file(args.exclude)
 
-    chrome_profile = "%s/.config/google-chrome/Default/" % expanduser("~")
-    if args.profile:
-        chrome_profile = args.chrome_profile
+    # chrome_profile = "%s/.config/google-chrome/Default/" % expanduser("~")
+    # if args.profile:
+        # chrome_profile = args.chrome_profile
 
-    extension = "chrome-extension_edacconmaakjimmfgnblocblbcdcpbko_0"
-    db_path = "%s/databases/%s/2" % (chrome_profile, extension)
+    # extension = "chrome-extension_edacconmaakjimmfgnblocblbcdcpbko_0"
+    # db_path = "%s/databases/%s/2" % (chrome_profile, extension)
+    db_path = args.profile
     conn = sqlite3.connect(db_path)
     try:
         if args.action == "export":
