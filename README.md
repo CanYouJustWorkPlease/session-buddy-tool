@@ -11,8 +11,8 @@ Features:
 
 ## Requirements
 * [python 2.7.18](https://www.python.org/downloads/release/python-2718/)
-* python-cjson
-* pathlib2
+* [python-cjson](https://pypi.org/project/python-cjson/)
+* [pathlib2](https://pypi.org/project/pathlib2/)
 
 ## Setup
 
