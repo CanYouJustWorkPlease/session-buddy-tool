@@ -1,2 +1,2 @@
-cjson
-sqlite3
+python-cjson
+pathlib2
