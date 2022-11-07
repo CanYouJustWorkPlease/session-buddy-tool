@@ -1,7 +1,7 @@
 Session Buddy Tool
 ===========
 
-A simple tool for managing [Session Buddy Chrome Extension][0] data
+A simple tool for managing [Session Buddy Chrome Extension](https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko) data, on Windows
 
 Features:
 * export to JSON
@@ -40,5 +40,3 @@ Example:
 ```
 py -2 session_buddy_tool.py -a export -d "C:\Users\test\AppData\Local\Google\Chrome Beta\User Data\Default\databases\chrome-extension_dlhjgdimhamgfjmeeapfdlbhibfagijd_0\1"
 ```
-
-[1]: https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko
