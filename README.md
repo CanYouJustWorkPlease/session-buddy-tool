@@ -23,9 +23,9 @@ $ py -2 pip install -r requirements.txt
 
 ## Usage
 ```
-$ ./session_buddy_tool.py -h
+$ py -2 session_buddy_tool.py -h
 usage: session_buddy_tool.py [-h] -a {export,merge,clean} [-e EXCLUDE]
-                             [-p PROFILE]
+                             [-d DATABASE_PATH]
 
 optional arguments:
   -h, --help            show this help message and exit
