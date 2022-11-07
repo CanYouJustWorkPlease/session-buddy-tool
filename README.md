@@ -10,15 +10,15 @@ Features:
 
 
 ## Requirements
-* python
-* cjson
-* sqllite3
+* [python 2.7.18](https://www.python.org/downloads/release/python-2718/)
+* python-cjson
+* pathlib2
 
 ## Setup
 
 Install requiremtents:
 ```
-$ pip install -r requirements.txt
+$ py -2 pip install -r requirements.txt
 ```
 
 ## Usage
@@ -30,12 +30,15 @@ usage: session_buddy_tool.py [-h] -a {export,merge,clean} [-e EXCLUDE]
 optional arguments:
   -h, --help            show this help message and exit
   -a {export,merge,clean}, --action {export,merge,clean}
-                        Action: export, merge, clean
+                        Action: export as a JSON file, merge, clean
   -e EXCLUDE, --exclude EXCLUDE
                         Path to file with excluded urls
-  -p PROFILE, --profile PROFILE
-                        Path to Chrome profile
-
+  -d DATABASE_PATH, --database_path DATABASE_PATH
+                        Path to the database file
+```
+Example:
+```
+py -2 session_buddy_tool.py -a export -d "C:\Users\test\AppData\Local\Google\Chrome Beta\User Data\Default\databases\chrome-extension_dlhjgdimhamgfjmeeapfdlbhibfagijd_0\1"
 ```
 
 [1]: https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko
